@@ -1,0 +1,60 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { MovieData } from "../../actions/types";
+
+interface MovieCardProps {
+  movie: MovieData;
+}
+
+export default function MovieCard({ movie }: MovieCardProps) {
+  const [posterUrl, setPosterUrl] = useState(
+    movie.poster || "/placeholder.svg"
+  );
+
+  return (
+    <Card className="overflow-hidden">
+      <div className="aspect-2/3 w-full overflow-hidden">
+        <Image
+          src={posterUrl}
+          alt={movie.title}
+          width={300}
+          height={450}
+          className="h-full w-full object-cover"
+          onError={() => setPosterUrl("/placeholder.svg")}
+        />
+      </div>
+
+      <CardContent className="p-4">
+        <h3 className="font-semibold">{movie.title}</h3>
+
+        <p className="text-muted-foreground text-sm">
+          {movie.releaseYear} • {movie.runtime} min
+        </p>
+
+        <div className="mt-2">
+          <Badge variant="outline">{movie.genre}</Badge>
+        </div>
+      </CardContent>
+
+      <CardFooter className="flex justify-between p-4 pt-0">
+        <span className="text-sm font-medium">
+          ⭐ {movie.rating}/10
+        </span>
+
+        <Button variant="ghost" size="sm">
+          Details
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
