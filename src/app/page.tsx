@@ -1,14 +1,15 @@
 import Footer from "@/components/footer";
+import HeroBanner from "@/components/landing/hero-banner";
 import MainNav from "@/components/main-nav";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <MainNav/>
-      <main className="grow flex items-center justify-center">
-        <h1>Welcome</h1>
+    <div className="flex min-h-screen flex-col">
+      <MainNav />
+      <main className="flex-1">
+        <HeroBanner />
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
