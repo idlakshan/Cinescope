@@ -2,15 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MovieData } from "../../actions/types";
+import { MovieData } from "../../../actions/types";
+import { Star } from "lucide-react";
 
 interface MovieCardProps {
   movie: MovieData;
@@ -18,7 +14,7 @@ interface MovieCardProps {
 
 export default function MovieCard({ movie }: MovieCardProps) {
   const [posterUrl, setPosterUrl] = useState(
-    movie.poster || "/placeholder.svg"
+    movie.poster || "/placeholder.svg",
   );
 
   return (
@@ -38,17 +34,18 @@ export default function MovieCard({ movie }: MovieCardProps) {
         <h3 className="font-semibold">{movie.title}</h3>
 
         <p className="text-muted-foreground text-sm">
-          {movie.releaseYear} • {movie.runtime} min
+          {movie.year} • {movie.runtime} min
         </p>
 
         <div className="mt-2">
-          <Badge variant="outline">{movie.genre}</Badge>
+          <Badge variant="outline">{movie.genres}</Badge>
         </div>
       </CardContent>
 
       <CardFooter className="flex justify-between p-4 pt-0">
         <span className="text-sm font-medium">
-          ⭐ {movie.rating}/10
+          <Star className="w-4 h-4 text-yellow-500" />
+          {movie?.imdb?.rating}/10
         </span>
 
         <Button variant="ghost" size="sm">
