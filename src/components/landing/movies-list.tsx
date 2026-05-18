@@ -1,12 +1,12 @@
 
-import { getMovies } from "../../../actions/movies";
-import { MovieData } from "../../../actions/types";
+import { getMovies } from "../../actions/movies";
+import { MovieData } from "../../actions/types";
 import MovieCard from "./movie-card";
 
 export default async function MoviesList() {
   const response = await getMovies({ limit: 8 });
 
-  console.log(response);
+  //console.log(response);
   const movies: MovieData[] = response?.data || [];
 
   if (!movies.length) {

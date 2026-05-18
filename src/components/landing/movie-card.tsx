@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MovieData } from "../../../actions/types";
+import { MovieData } from "../../actions/types";
 import { Star } from "lucide-react";
 
 interface MovieCardProps {
