@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MovieData } from "../../actions/types";
 import { Star } from "lucide-react";
+import { Skeleton } from "../ui/skeleton";
 
 interface MovieCardProps {
   movie: MovieData;
@@ -53,5 +54,29 @@ export default function MovieCard({ movie }: MovieCardProps) {
         </Button>
       </CardFooter>
     </Card>
+  );
+}
+
+export function MovieCardSkeleton() {
+  return (
+    <div className="overflow-hidden rounded-lg border border-primary/20 animate-pulse">
+      <Skeleton className="aspect-2/3 w-full" />
+      <div className="p-4">
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-3/4" />
+          <Skeleton className="h-4 w-1/2" />
+        </div>
+
+        <div className="flex mt-3 gap-1">
+          <Skeleton className="h-5 w-1/5" />
+          <Skeleton className="h-5 w-1/5" />
+        </div>
+
+        <div className="flex justify-between gap-2 mt-6">
+          <Skeleton className="h-8 w-18 rounded-full" />
+          <Skeleton className="h-8 w-18 rounded-full" />
+        </div>
+      </div>
+    </div>
   );
 }
